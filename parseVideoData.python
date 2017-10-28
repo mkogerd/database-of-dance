@@ -1,0 +1,48 @@
+from bs4 import BeautifulSoup
+import requests
+import csv
+url = 'http://www.libraryofdance.org'
+proxy = {'http':'http://www.libraryofdance.org/dances'}
+page = requests.get(url+'/dances', proxies = proxy)
+soup = BeautifulSoup(page.text, 'html.parser')
+
+DanceList = []
+
+dances = []
+dances = soup.findAll(['h2','h3','p'])
+contemp = False
+for tags in dances:
+    #print(tags.name, tags.contents)
+    if tags.name =='h2':
+        if tags.contents[0] =='Contemporary Social Dances':
+            contemp = True
+        else:
+            contemp = False
+    if contemp and tags.name =='h3':
+         if tags.contents[0] =='Mixers':
+            contemp = False
+        dance = tags.contents[0]
+    if contemp and tags.name == 'p':
+        styles = []
+        styles += tags.findAll('a')
+        for danceType in styles:
+            dt = danceType.contents[0]
+
+            danceURL = url+danceType['href']
+            danceproxy = {'http':danceURL}
+            print(danceURL)
+            dancePage = requests.get(danceURL, proxies = danceproxy)
+            danceSoup = BeautifulSoup(dancePage.text, 'html.parser')
+            for classes in danceSoup.findAll('div'):
+                classname = classes['class'][0]
+                for subclass in classes.findAll(['i','a']):
+                    if subclass.name == 'i':
+                        sub = subclass.contents[0]
+                    else:
+                        #print(dance,',',dt,',',classname,',',sub,',',subclass.contents[0],',',subclass['href'])
+                        DanceList += [dance, danceType.contents, classes['class'],subclass.contents,subclass['href']]
+
+                        
+with open('moveList.csv','w') as f:
+    for line in DanceList:
+        f.write(line)
