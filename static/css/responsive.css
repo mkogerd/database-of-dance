@@ -1,0 +1,54 @@
+/* Small Mobile: 320px. (Default - mobile first) 
+================================================= */
+.container {
+	width:280px;
+}
+
+.style-section {
+	display: grid;
+	grid-template:
+		"title" auto
+		"content" auto
+		;
+}
+
+.variation-section {
+	display: grid;
+	grid-template:
+		"content content content content" auto
+		/ 1fr 1fr 1fr 1fr;
+		;
+}
+
+
+
+/* Large Mobile, Mobile Landscape: 480px.
+================================================= */
+@media (min-width:480px) {
+	.container{
+		width: 450px;
+	}
+} 
+/* Tablet: 768px.
+================================================= */
+@media (min-width: 768px) {
+	.container{
+		width: 738px;
+	}
+}
+
+/* Browser: 980px.
+================================================= */
+@media (min-width: 980px) {
+	.container{
+		width: 950px;
+	}
+}
+
+/* Large Browser: 1200px.
+================================================= */
+@media (min-width: 1200px) {	
+	.container{
+		width: 1170px;
+	}
+}
