@@ -5,12 +5,14 @@ url = 'http://www.libraryofdance.org'
 proxy = {'http':'http://www.libraryofdance.org/dances'}
 page = requests.get(url+'/dances', proxies = proxy)
 soup = BeautifulSoup(page.text, 'html.parser')
-nceList = []
+print('Finished')
 with open('moveList.csv','w') as f:
     writer = csv.writer(f)
+    writer.writerow(['Genre','Style','Category','Variation','Video'])
     dances = []
     dances = soup.findAll(['h2','h3','p'])
     contemp = False
+    #First Sorts for only the dances in the Contamporary Social Dances. Because the Webpage is not organized into a tree the sort must be done manually
     for tags in dances:
        #print(tags.name, tags.contents)
         if tags.name =='h2':
@@ -19,29 +21,28 @@ with open('moveList.csv','w') as f:
             else:
                 contemp = False
         if contemp and tags.name =='h3':
-            if tags.contents[0] =='Mixers':
+            if tags.contents[0] =='Mixers': #this exclueds the mixers tab because it does not contain videos
                 contemp = False
             dance = tags.contents[0]
         if contemp and tags.name == 'p':
             styles = []
-            styles += tags.findAll('a')
+            styles += tags.findAll('a') #Gets all of the Dance Styles from homepage
             for danceType in styles:
                 dt = danceType.contents[0]
-                danceURL = url+danceType['href']
+                danceURL = url+danceType['href']#concatinates the link and extracts the dance data from each individual page
                 danceproxy = {'http':danceURL}
                 #print(danceURL)
                 dancePage = requests.get(danceURL, proxies = danceproxy)
                 danceSoup = BeautifulSoup(dancePage.text, 'html.parser')
-                for classes in danceSoup.findAll('div'):
+                for classes in danceSoup.findAll('div'):#the video data is all contained under the div tag 'variations'
                     classname = classes['class'][0]
                     if classname == 'variations':
-                        for subclass in classes.findAll(['i','a']):
+                        for subclass in classes.findAll(['i','a']):#because the website is not written in a tree format each move must be parsed individually
                             if subclass.name == 'i':
-                                sub = subclass.contents[0]
+                                sub = subclass.contents[0]#this describes the type of move
                             else:
                                 #print(dance,',',dt,',',classname,',',sub,',',subclass.contents[0],',',subclass['href'])
                                 #DanceList += [dance.string, danceType.contents, classes['class'],subclass.contents,subclass['href']]
-                                writer.writerow([dance.string, danceType.contents[0], classes['class'][0],subclass.contents[0],subclass['href']])
+                                writer.writerow([dance.string, danceType.contents[0],sub,subclass.contents[0],subclass['href']])
 
 print('Finished')
-
