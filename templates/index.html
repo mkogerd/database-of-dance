@@ -53,10 +53,8 @@
 						{{style}}
 					</div>
 					<div class="variation-section">
-						{% for variation in (df[df['Style'] == style])['Variation'] %}
-						<div class="variation-thumbnail">
-							{{variation}}
-						</div>
+						{% for index, row in (df[df['Style'] == style]).iterrows() %}
+						<div class="variation-thumbnail" data-video="{{row['Title']}}">{{row['Variation']}}</div>
 						{% endfor %}
 					</div>
 				</div>
@@ -64,21 +62,66 @@
 			{% endfor %}
 		</div>
 		{% endfor %}
+
+		<!-- SlideOut box -->
+		<div id="slideOut">
+			<!--   Tab -->
+			<div class="slideOutTab">
+			    <div>
+			    	<p>i am tab.</p>
+			    </div>
+			</div>
+
+			<!-- Embedded Video Player -->
+			<div id="divVideo">
+			  	<video controls>
+			    	<source src="" type="video/mp4" />
+				</video>
+			</div>
+
+			<div class="modal-content">
+		    	<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+		    		<h4 class="modal-title">Hello World!</h4> 
+		    	</div>
+				<div class="modal-body">
+		    		<p>One fine body…</p>
+			    </div>
+			    <div class="modal-footer"> </div>
+			</div>
+		</div>
+
 	</body>
 </html>
 <script type="text/javascript">
-// Get the navbar
-var navbar = document.getElementById("navbar");
+	// Get the navbar
+	var navbar = document.getElementById("navbar");
+	// Get the offset position of the navbar
+	var sticky = navbar.offsetTop;
 
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+	// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+	window.onscroll = function(e) {
+		if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		} else {
+	    	navbar.classList.remove("sticky");
+		}
+	}
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
+	this.$slideOut = $('#slideOut');
+
+	// Slideout show
+	this.$slideOut.find('.slideOutTab').on('click', function() {
+		$("#slideOut").toggleClass('showSlideOut');
+	});
+
+	$(".variation-thumbnail").click(function() {
+		var video = $(this).data('video');
+		if 	($("#divVideo video source").attr("src") != "/static/vid/"+video) {
+			$("#slideOut").addClass('showSlideOut');
+			$("#divVideo video source").attr("src","/static/vid/"+video)
+			$("#divVideo video")[0].load();
+			$("#divVideo video")[0].play();
+		}
+
+	});
 </script>
