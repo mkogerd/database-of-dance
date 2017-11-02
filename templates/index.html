@@ -33,7 +33,7 @@
 		<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
 
 	</head-->
-	<body onscroll="myFunction()">
+	<body>
 		<header>
 			<h1>Database of Dance</h1>
 		</header>
@@ -54,6 +54,7 @@
 				<div class="style-section">
 					<div class="section-title">
 						{{style}}
+						<button class="close-style-button">x</button>
 					</div>
 					<div class="variation-section">
 						{% for index, row in (df[df['Style'] == style]).iterrows() %}
@@ -97,7 +98,7 @@
 		} else {
 	    	navbar.classList.remove("sticky");
 		}
-	}
+	};
 
 	//this.$slideOut = $('#slideOut');
 
@@ -105,6 +106,11 @@
 	$('#slideOut').find('.close-tab-btn').on('click', function() {
 		$("#slideOut").removeClass('showSlideOut');
 		$(".genre-section").removeClass('squish');
+	});
+
+	// Style section compression
+	$('.close-style-button').click(function() {
+		$(this).closest('.section-title').next('.variation-section').toggleClass('hide-variation-section');
 	});
 
 	// Thumbnail selection
@@ -115,8 +121,8 @@
 		}
 		var video = $(this).data('video');
 		if 	($("#divVideo video source").attr("src") != "/static/vid/"+video) {
-			$(".video-title").text(video.substring(0, video.length - 4))
-			$("#divVideo video source").attr("src","/static/vid/"+video)
+			$(".video-title").text(video.substring(0, video.length - 4));
+			$("#divVideo video source").attr("src","/static/vid/"+video);
 			$("#divVideo video")[0].load();
 			$("#divVideo video")[0].play();
 		}

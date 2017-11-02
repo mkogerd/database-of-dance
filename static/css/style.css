@@ -1,22 +1,14 @@
 .container {
 	margin-right: auto;
 	margin-left: auto;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-top: 10px;
+	padding-bottom: 0px;
   width: 90%;
   margin: auto;
-
-	/*display: grid;
-	grid-row-gap: 30px;
-	grid-template:
-		"title" 
-		"content"
-		;*/
 }
 
 .style-section {
 	display: grid;
-	grid-gap: 30px;
 }
 
 .page-title {
@@ -49,11 +41,33 @@
   border: solid #6e6e6e 2px;
   text-decoration: none;
   text-align: center;
+  transition: all .1s ease-in-out; 
 }
 
 .variation-thumbnail:hover {
+  transform: scale(1.1);
   background: #9abcf5;
   text-decoration: none;
+}
+
+.variation-section {
+  max-height: 100%;
+  overflow: hidden;
+  padding: 10px 0px 5px 0px;
+}
+
+/* Shrink the variation section into oblivion */
+.hide-variation-section {
+  transition: all 0.2s ease-in-out; 
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+}
+.hide-variation-section *{
+  transition: all 0.2s ease-in;
+  font-size: 0;
+  margin: 0;/**/
+  padding: 0;/**/
 }
 
 /* 3. Typography
@@ -121,7 +135,7 @@ nav a {
 .squish {
   /* Animation  */
   transition-property: all;
-  transition-duration: .5s;
+  transition-duration: 0s;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
