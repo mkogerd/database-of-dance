@@ -53,7 +53,7 @@
 .variation-section {
   max-height: 100%;
   overflow: hidden;
-  padding: 10px 0px 5px 0px;
+  padding: 10px 13px 5px 13px;
 }
 
 /* Shrink the variation section into oblivion */
@@ -87,6 +87,7 @@ nav {
 
 /* Navbar links */
 nav a {
+  transition: all 0.2s ease-in-out;
   float: left;
   display: block;
   color: #cccccc;
@@ -110,6 +111,10 @@ nav a {
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .genre-section {
   padding-top: 45px;
+}
+
+.nav-genre:hover {
+  background-color: #444444;
 }
 
 
