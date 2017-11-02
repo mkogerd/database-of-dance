@@ -12,7 +12,7 @@ def template_test():
 
 @app.route('/<genre>')
 def some_place_page(genre):
-	return render_template('index.html', df=(df[df['Genre'] == genre]), genres=genres)
+	return render_template('index.html', df=(df[df['Genre'] == genre]), genres=genres, genre_chosen=genre)
     
 
 if __name__ == '__main__':

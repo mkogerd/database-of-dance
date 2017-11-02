@@ -11,12 +11,11 @@
 	display: grid;
 }
 
-.page-title {
-  font-size: 25px;
-  grid-area: title;
-  text-align: center;
-  background-color: #2469de;
-  padding: 20px 20px 20px 20px;
+.title {
+  font-size: 50px; 
+  font-variant: small-caps;
+  color: #cccccc;
+  background-color: #222222;
 }
 
 .section-title {
@@ -26,7 +25,8 @@
   -webkit-border-radius: 8;
   -moz-border-radius: 8;
   border-radius: 8px;
-	background-color: #5eecd9;
+	background-color: #154451;
+  color: #cccccc;
   padding: 20px 20px 20px 20px;
 }
 
@@ -70,6 +70,7 @@
   padding: 0;/**/
 }
 
+
 /* 3. Typography
 ======================================================================== */
 body {
@@ -89,7 +90,7 @@ nav {
 nav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #cccccc;
   text-align: center;
   padding: 14px;
   text-decoration: none;
