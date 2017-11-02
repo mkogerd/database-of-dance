@@ -46,7 +46,8 @@
 ================================================= */
 @media (min-width: 768px) {
 	.container{
-		width: 738px;
+		width: 90%;
+		margin: auto;
 	}
 	
 	#slideOut {

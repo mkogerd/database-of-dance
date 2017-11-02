@@ -48,7 +48,7 @@
 		<!-- Content section -->
 		{% for genre in df.Genre.unique() %}
 		<div class="genre-section">
-			<h1 style="text-align:center; background-color:red">{{genre}}</h1>
+			<div class="page-title">{{genre}}</div>
 			{% for style in (df[df['Genre'] == genre]).Style.unique() %}
 			<div class="container">
 				<div class="style-section">
