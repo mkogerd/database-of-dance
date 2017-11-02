@@ -14,13 +14,17 @@
 
 .variation-section {
 	display: grid;
+	grid-gap: 30px;
 	grid-template:
-		"content content content content" auto
-		/ 1fr 1fr 1fr 1fr;
+		"content content" auto
+		/ 1fr 1fr;
 		;
 }
 
-
+#slideOut {
+	width: 100%;
+	right: -100%;
+}
 
 /* Large Mobile, Mobile Landscape: 480px.
 ================================================= */
@@ -28,12 +32,30 @@
 	.container{
 		width: 450px;
 	}
+
+	.variation-section {
+	display: grid;
+	grid-gap: 30px;
+	grid-template:
+		"content content content" auto
+		/ 1fr 1fr 1fr;
+		;
+	}
 } 
 /* Tablet: 768px.
 ================================================= */
 @media (min-width: 768px) {
 	.container{
 		width: 738px;
+	}
+	
+	#slideOut {
+		width: 33%;
+		right: -33%;
+	}
+
+	.squish {
+		margin-right: 33vw;
 	}
 }
 

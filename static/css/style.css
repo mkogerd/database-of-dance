@@ -3,6 +3,7 @@
 	margin-left: auto;
 	padding-top: 30px;
 	padding-bottom: 30px;
+  width: 100%;
 
 	/*display: grid;
 	grid-row-gap: 30px;
@@ -22,18 +23,20 @@
 	text-align: center;
 }
 
-.variation-section {
-	display: grid;
-	grid-gap: 30px;
-	grid-template:
-		"content content content content" auto
-		/ 1fr 1fr 1fr 1fr;
-		;
-}
-
 .variation-thumbnail {
 	text-align: center;
 	background-color: green;
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  height: 40px;
+  padding: auto;
+}
+
+/* 3. Typography
+======================================================================== */
+body {
+  font-family: "Arial Black", Gadget, sans-serif;
 }
 
 /* 3. Navigation Section
@@ -76,10 +79,9 @@ nav a {
 ======================================================================== */
 #slideOut {
   position: fixed;
-  width: 33%;
+  grid-area: sidebar;
   height: 800px;
   top: 0px;
-  right: -33%;
   background-color: cyan;
   /* Animation  */
   transition-property: all;
@@ -87,16 +89,21 @@ nav a {
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
-
 /* Display slideOut */
-
 .showSlideOut {
   right: 0px !important;
 }
 
+.squish {
+  /* Animation  */
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
 
 /* Tab */
-
+/*
 .slideOutTab {
   margin-top: 50px;
   position: absolute;
@@ -107,7 +114,7 @@ nav a {
   box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
   background: #F2AB34;
   border-radius: 15px 0px 0px 15px
-}
+}*/
 
 .slideOutTab div {
   text-align: center;
