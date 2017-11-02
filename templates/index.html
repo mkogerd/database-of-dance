@@ -41,7 +41,7 @@
 		<!-- Navigation section -->
 		<nav id="navbar">
 			{% for genre in genres %}
-			<a href="{{genre}}"{% if genre == genre_chosen %} style="color:red"{% endif %}>{{genre}}</a>
+			<a href="{{genre}}"{% if genre == genre_chosen %} style="color:red" {% endif %}>{{genre}}</a>
 			{% endfor %}
 		</nav>
 
@@ -53,7 +53,7 @@
 				<div class="style-section">
 					<div class="section-title">
 						{{style}}
-						<button class="close-style-button">x</button>
+						<i class="close-style-button fa fa-minus" style='float:right;'aria-hidden="true"></i>
 					</div>
 					<div class="variation-section">
 						{% for index, row in (df[df['Style'] == style]).iterrows() %}
@@ -110,6 +110,7 @@
 	// Style section compression
 	$('.close-style-button').click(function() {
 		$(this).closest('.section-title').next('.variation-section').toggleClass('hide-variation-section');
+		$(this).toggleClass('fa-minus fa-plus')
 	});
 
 	// Thumbnail selection
