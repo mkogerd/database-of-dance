@@ -14,7 +14,7 @@
 .title {
   font-size: 50px; 
   font-variant: small-caps;
-  color: #cccccc;
+  color: #f4f4f4;
   background-color: #222222;
 }
 
@@ -25,8 +25,8 @@
   -webkit-border-radius: 8;
   -moz-border-radius: 8;
   border-radius: 8px;
-	background-color: #154451;
-  color: #cccccc;
+	background-color: #c0b283;
+  color: #373737;
   padding: 20px 20px 20px 20px;
 }
 
@@ -35,10 +35,10 @@
   -moz-border-radius: 8;
   border-radius: 8px;
   font-family: Arial;
-  color: #343477;
-  background: #ffffff;
+  color: #373737;
+  background: #dcd0c0;
   padding: 10px 20px 10px 20px;
-  border: solid #6e6e6e 2px;
+  border: solid #373737 2px;
   text-decoration: none;
   text-align: center;
   transition: all .1s ease-in-out; 
@@ -46,7 +46,7 @@
 
 .variation-thumbnail:hover {
   transform: scale(1.1);
-  background: #9abcf5;
+  background: #6AA398;
   text-decoration: none;
 }
 
@@ -75,6 +75,7 @@
 body {
   font-family: "Arial Black", Gadget, sans-serif;
   font-size: 15px;
+  background-color:#d5d5d5;
 }
 
 /* 3. Navigation Section
@@ -90,7 +91,7 @@ nav a {
   transition: all 0.2s ease-in-out;
   float: left;
   display: block;
-  color: #cccccc;
+  color: #f4f4f4;
   text-align: center;
   padding: 14px;
   text-decoration: none;
@@ -210,3 +211,32 @@ nav a {
 .color-secondary-2-2 { color: #496D89 }
 .color-secondary-2-3 { color: #123652 }
 .color-secondary-2-4 { color: #042037 }
+
+/* 3. Color Testing
+======================================================================== */
+
+.title {
+  background-color: #111;
+}
+nav {
+  background-color: #222;
+}
+nav a {
+  color: #f4f4f4;
+}
+body {
+  background-color:#d5d5d5;
+}
+.section-title {
+  background-color: #6d7993;
+  color: #373737;
+}
+
+.variation-thumbnail {
+  background: #9099a2;
+  color: #373737;
+}
+
+.variation-thumbnail:hover {
+  background: #6AA398;
+}
