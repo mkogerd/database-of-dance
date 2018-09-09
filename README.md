@@ -1,5 +1,5 @@
 # Database of Dance
-Virtual archive of dance videos using flask templates to dynamically populate the webpage content and pandas to manage a csv database. 
+Virtual archive of dance videos using flask templates to dynamically populate the webpage content and pandas to manage a csv database. The webscraping script appears to have been lost, but the repository still contains its resulting .csv file.
 
 **Note:** Due to the structure of the website being scraped being formatted differently for certain sections, some of the sections on this website have improper labeling (like the salsa & cha cha section).  
 
